@@ -1,7 +1,56 @@
+import { useState } from "react";
 import { motion, Variants } from "framer-motion";
-import { Mail, MessageSquare, MapPin, Github, Twitter, Send } from "lucide-react";
+import { Mail, MessageSquare, MapPin, Github, Twitter, Send, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch("https://api.ruyanga.tech/mail/contact-message", {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        toast.error(errorData.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("An error occurred. Please check your connection.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -117,15 +166,19 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="lg:col-span-3"
           >
-            <form className="bg-card rounded-2xl border border-border p-8 shadow-sm space-y-6">
+            <form onSubmit={handleSubmit} className="bg-card rounded-2xl border border-border p-8 shadow-sm space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-mono text-muted-foreground">Name</label>
                   <input
                     type="text"
                     id="name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder="John Doe"
-                    className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60"
+                    disabled={loading}
+                    className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60 disabled:opacity-50"
                   />
                 </div>
                 <div className="space-y-2">
@@ -133,8 +186,12 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="john@example.com"
-                    className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60"
+                    disabled={loading}
+                    className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60 disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -143,27 +200,39 @@ const Contact = () => {
                 <input
                   type="text"
                   id="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   placeholder="Project Inquiry"
-                  className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60"
+                  disabled={loading}
+                  className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60 disabled:opacity-50"
                 />
               </div>
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-mono text-muted-foreground">Message</label>
                 <textarea
                   id="message"
+                  required
                   rows={5}
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Tell me about your project..."
-                  className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none placeholder:text-muted-foreground/60"
+                  disabled={loading}
+                  className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none placeholder:text-muted-foreground/60 disabled:opacity-50"
                 />
               </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-4 rounded-lg bg-gradient-primary text-primary-foreground font-heading font-bold shadow-glow hover:shadow-primary/40 transition-all flex items-center justify-center gap-2 group"
+                disabled={loading}
+                className="w-full py-4 rounded-lg bg-gradient-primary text-primary-foreground font-heading font-bold shadow-glow hover:shadow-primary/40 transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                Send Message
+                {loading ? (
+                  <Loader2 size={18} className="animate-spin" />
+                ) : (
+                  <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                )}
+                {loading ? "Sending..." : "Send Message"}
               </motion.button>
             </form>
           </motion.div>
