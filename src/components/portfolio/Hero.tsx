@@ -140,7 +140,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10"
           >
-            Full-Stack Engineer with 3+ years of experience designing, building, and deploying
+            Full-Stack Engineer with 5+ years of experience designing, building, and deploying
             production-ready web applications. Specialized in{" "}
             <span className="text-foreground font-medium">backend architecture</span>,{" "}
             <span className="text-foreground font-medium">API development</span>, and{" "}
