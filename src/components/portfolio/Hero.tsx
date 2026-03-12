@@ -144,8 +144,8 @@ const Hero = () => {
             production-ready web applications. Specialized in{" "}
             <span className="text-foreground font-medium">backend architecture</span>,{" "}
             <span className="text-foreground font-medium">API development</span>, and{" "}
-            <span className="text-foreground font-medium">database design</span> using TypeScript,
-            NestJS, and PostgreSQL.
+            <span className="text-foreground font-medium">database design</span> using TypeScript (Expert),
+            NestJS (Expert), FastAPI (Expert), Django (Expert), MySql (Expert) ,MongoDb and PostgreSQL (Expert).
           </motion.p>
 
           <motion.div
@@ -181,7 +181,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mt-16 flex flex-wrap gap-3"
           >
-            {["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"].map((tech, i) => (
+            {["TypeScript (Expert)", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"].map((tech, i) => (
               <motion.span
                 key={tech}
                 initial={{ opacity: 0, scale: 0.8 }}

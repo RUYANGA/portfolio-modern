@@ -10,7 +10,7 @@ const categories: SkillCategory[] = [
   {
     title: "Frontend",
     icon: "◆",
-    skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Responsive UI", "State Management"],
+    skills: ["React.js", "Next.js", "TypeScript (Expert)", "Tailwind CSS", "Responsive UI", "State Management"],
   },
   {
     title: "Mobile",
@@ -35,7 +35,7 @@ const categories: SkillCategory[] = [
   {
     title: "Languages",
     icon: "◆",
-    skills: ["JavaScript", "TypeScript", "Python (Expert)", "Java", "Dart", "C++"],
+    skills: ["JavaScript (Expert)", "TypeScript (Expert)", "Python (Expert)", "Java", "Dart", "C++"],
   },
 ];
 
