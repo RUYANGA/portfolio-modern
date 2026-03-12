@@ -45,13 +45,9 @@ const About = () => {
             <div className="bg-card rounded-xl border border-border p-6 space-y-5 hover:border-primary/30 transition-colors shadow-sm hover:shadow-xl hover:shadow-primary/5 group">
               <motion.div
                 whileHover={{ scale: 1.05, rotate: 2 }}
-                className="w-20 h-20 rounded-xl overflow-hidden bg-gradient-primary flex items-center justify-center shadow-glow border border-primary/20"
+                className="w-20 h-20 rounded-xl bg-gradient-primary flex items-center justify-center font-heading text-2xl font-bold text-primary-foreground shadow-glow"
               >
-                <img
-                  src="/profile.png"
-                  alt="Ruyanga Merci"
-                  className="w-full h-full object-cover"
-                />
+                MR
               </motion.div>
               <div>
                 <h3 className="font-heading text-xl font-semibold group-hover:text-primary transition-colors">Ruyanga Merci</h3>
