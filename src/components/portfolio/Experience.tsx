@@ -3,6 +3,19 @@ import { Briefcase, GraduationCap, Award } from "lucide-react";
 
 const experiences = [
   {
+    title: "Full-stack Intern",
+    company: "SEVEN X",
+    location: "Kimironko, Rwanda",
+    period: "March 2025 — May 2025 (3 Months)",
+    points: [
+      "Building high-performance web applications using Hono for the backend and Next.js for the frontend.",
+      "Designing and implementing scalable database schemas using PostgreSQL.",
+      "Developed robust and secure API endpoints to support feature-rich frontend components.",
+      "Optimizing application performance and ensuring cross-platform responsiveness.",
+    ],
+    impact: "Contributing to the rapid delivery of modern, scalable full-stack solutions.",
+  },
+  {
     title: "Backend Development Intern",
     company: "Binary Hub",
     location: "Kigali, Rwanda",
@@ -85,10 +98,6 @@ const Experience = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-gradient-primary" />
-            <span className="font-mono text-sm text-primary">03.</span>
-          </div>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-12">Experience & Education</h2>
         </motion.div>
 

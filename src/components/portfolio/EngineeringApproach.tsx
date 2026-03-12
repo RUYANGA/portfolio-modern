@@ -30,10 +30,6 @@ const EngineeringApproach = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-gradient-primary" />
-            <span className="font-mono text-sm text-primary">02.</span>
-          </div>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Engineering Approach</h2>
           <p className="text-muted-foreground max-w-xl mb-12">
             How I conceptualize, build, and maintain production-grade systems — prioritizing reliability,
@@ -42,7 +38,7 @@ const EngineeringApproach = () => {
         </motion.div>
 
         <div className="space-y-16">
-          {/* Architecture/Philosophy */}
+          {/* Top Row: Architecture/Philosophy */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -80,43 +76,74 @@ const EngineeringApproach = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
-            <h3 className="font-heading font-semibold text-lg mb-5 flex items-center gap-2">
-              <Rocket size={18} className="text-primary" />
-              Deployment Flow
-            </h3>
-            <div className="font-mono text-xs space-y-2 text-muted-foreground bg-secondary rounded-lg p-4 border border-border">
-              <p><span className="text-primary"># Backend:</span> Docker → CI/CD → VPS</p>
-              <p><span className="text-primary"># Mobile:</span> Expo / Fastlane → Stores</p>
-              <p><span className="text-primary"># Web:</span> Vercel / Netlify / Caddy</p>
-              <div className="h-px bg-border my-2" />
-              <p><span className="text-primary">$</span> expo build:android</p>
-              <p><span className="text-primary">$</span> docker-compose push prod</p>
-            </div>
           </motion.div>
 
-          {/* Principles */}
+          {/* Bottom Row: Process & Principles */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-card rounded-xl border border-border p-6"
+            className="grid md:grid-cols-2 gap-8"
           >
-            <h3 className="font-heading font-semibold text-lg mb-5">Architecture Principles</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                "Separation of Concerns",
-                "Modular Structure",
-                "Clean API Contracts",
-                "Secure Auth Flows",
-                "Performance-First DB",
-                "Testable Code",
-              ].map((p) => (
-                <div key={p} className="px-3 py-2 text-xs text-center font-mono text-secondary-foreground bg-secondary rounded-lg border border-border">
-                  {p}
+            {/* Deployment Flow */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -5, borderColor: "rgba(var(--primary-rgb), 0.3)" }}
+              className="bg-card rounded-xl border border-border p-6 hover:shadow-lg hover:shadow-primary/5 transition-all group flex flex-col"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-secondary text-primary group-hover:scale-110 transition-transform">
+                  <Rocket size={20} />
                 </div>
-              ))}
-            </div>
+                <h3 className="font-heading font-semibold text-lg group-hover:text-primary transition-colors">Deployment Flow</h3>
+              </div>
+
+              <div className="flex-grow font-mono text-xs space-y-3 text-foreground/70 dark:text-muted-foreground bg-secondary/80 dark:bg-secondary/50 rounded-lg p-5 border border-border group-hover:border-primary/20 transition-colors">
+                <div className="space-y-1">
+                  <p><span className="text-primary/80 dark:text-primary/70"># Backend:</span> Docker → CI/CD → VPS</p>
+                  <p><span className="text-primary/80 dark:text-primary/70"># Mobile:</span> Expo / Fastlane → Stores</p>
+                  <p><span className="text-primary/80 dark:text-primary/70"># Web:</span> Vercel / Netlify / Caddy</p>
+                </div>
+                <div className="h-px bg-border my-3" />
+                <div className="space-y-1 opacity-80">
+                  <p><span className="text-primary/60 dark:text-primary/50">$</span> expo build:android</p>
+                  <p><span className="text-primary/60 dark:text-primary/50">$</span> docker-compose push prod</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Architecture Principles */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -5, borderColor: "rgba(var(--primary-rgb), 0.3)" }}
+              className="bg-card rounded-xl border border-border p-6 hover:shadow-lg hover:shadow-primary/5 transition-all group flex flex-col"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-secondary text-primary group-hover:scale-110 transition-transform">
+                  <Shield size={20} />
+                </div>
+                <h3 className="font-heading font-semibold text-lg group-hover:text-primary transition-colors">Architecture Principles</h3>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 flex-grow">
+                {[
+                  "Separation of Concerns",
+                  "Modular Structure",
+                  "Clean API Contracts",
+                  "Secure Auth Flows",
+                  "Performance-First DB",
+                  "Testable Code",
+                ].map((p) => (
+                  <div
+                    key={p}
+                    className="px-3 py-3 text-[10px] sm:text-xs text-center font-mono text-secondary-foreground bg-secondary/50 rounded-lg border border-border group-hover:border-primary/10 transition-colors flex items-center justify-center"
+                  >
+                    {p}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

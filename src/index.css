@@ -57,52 +57,49 @@
   }
 
   .light {
-    --background: 210 20% 98%;
-    --foreground: 220 20% 10%;
+    --background: 210 30% 99%;
+    --foreground: 220 20% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 220 20% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 220 20% 12%;
 
-    --primary: 172 66% 40%;
+    --primary: 172 66% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 93%;
+    --secondary: 210 20% 96%;
     --secondary-foreground: 220 16% 30%;
 
-    --muted: 220 14% 94%;
-    --muted-foreground: 215 15% 45%;
+    --muted: 210 20% 97%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 260 55% 55%;
+    --accent: 260 60% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 172 66% 45%;
 
-    --border: 220 14% 88%;
-    --input: 220 14% 88%;
-    --ring: 172 66% 40%;
-
-    --sidebar-background: 210 20% 96%;
+    --sidebar-background: 210 30% 98%;
     --sidebar-foreground: 220 16% 30%;
-    --sidebar-primary: 172 66% 40%;
+    --sidebar-primary: 172 66% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 93%;
+    --sidebar-accent: 210 20% 96%;
     --sidebar-accent-foreground: 220 16% 30%;
-    --sidebar-border: 220 14% 88%;
-    --sidebar-ring: 172 66% 40%;
+    --sidebar-border: 210 20% 90%;
+    --sidebar-ring: 172 66% 45%;
 
     /* Custom tokens */
-    --glow: 172 66% 40%;
-    --glow-purple: 260 55% 55%;
-    --surface: 220 14% 95%;
-    --surface-hover: 220 14% 90%;
-    --gradient-primary: linear-gradient(135deg, hsl(172, 66%, 40%), hsl(260, 55%, 55%));
-    --gradient-text: linear-gradient(135deg, hsl(172, 66%, 40%), hsl(260, 55%, 55%));
-    --shadow-glow: 0 0 30px -5px hsl(172 66% 40% / 0.15);
-    --shadow-glow-lg: 0 0 60px -10px hsl(172 66% 40% / 0.1);
+    --glow: 172 66% 45%;
+    --glow-purple: 260 60% 60%;
+    --surface: 210 20% 98%;
+    --surface-hover: 210 20% 94%;
+    --gradient-primary: linear-gradient(135deg, hsl(172, 66%, 45%), hsl(260, 60%, 60%));
+    --gradient-text: linear-gradient(135deg, hsl(172, 66%, 45%), hsl(260, 60%, 60%));
+    --shadow-glow: 0 10px 30px -10px hsl(172 66% 45% / 0.15);
+    --shadow-glow-lg: 0 20px 60px -15px hsl(172 66% 45% / 0.1);
   }
 }
 

@@ -1,7 +1,46 @@
-import { motion, Variants } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import { ArrowDown, Github, Mail, FileDown } from "lucide-react";
 
 const Hero = () => {
+  const [text, setText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const name = "Merci RUYANGA";
+  const period = 2000;
+
+  useEffect(() => {
+    let ticker = setInterval(() => {
+      tick();
+    }, typingSpeed);
+
+    return () => { clearInterval(ticker) };
+  }, [text, typingSpeed]);
+
+  const tick = () => {
+    let fullText = name;
+    let updatedText = isDeleting
+      ? fullText.substring(0, text.length - 1)
+      : fullText.substring(0, text.length + 1);
+
+    setText(updatedText);
+
+    if (isDeleting) {
+      setTypingSpeed(prevSpeed => prevSpeed / 1.5);
+    }
+
+    if (!isDeleting && updatedText === fullText) {
+      setIsDeleting(true);
+      setTypingSpeed(period);
+    } else if (isDeleting && updatedText === "") {
+      setIsDeleting(false);
+      setLoopNum(loopNum + 1);
+      setTypingSpeed(150);
+    }
+  };
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -22,18 +61,6 @@ const Hero = () => {
     },
   };
 
-  const glowVariants = {
-    animate: {
-      scale: [1, 1.1, 1],
-      opacity: [0.5, 0.8, 0.5],
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   return (
     <section id="home" className="min-h-screen flex items-center relative overflow-hidden">
       {/* Background decoration */}
@@ -48,7 +75,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl opacity-60 dark:opacity-100"
         />
         <motion.div
           animate={{
@@ -60,10 +87,10 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+          className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 dark:bg-accent/5 rounded-full blur-3xl opacity-60 dark:opacity-100"
         />
         {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
+        <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03]" style={{
           backgroundImage: "linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary) / 0.3) 1px, transparent 1px)",
           backgroundSize: "60px 60px"
         }} />
@@ -86,10 +113,18 @@ const Hero = () => {
 
           <motion.h1
             variants={itemVariants}
-            className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6"
+            className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6 min-h-[1.5em] md:min-h-[2em]"
           >
-            Merci<br />
-            <span className="text-gradient">RUYANGA</span>
+            <span className="text-foreground">{text.split(" ")[0]}</span>
+            <br />
+            <span className="text-gradient">
+              {text.split(" ")[1] || ""}
+            </span>
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.8, repeat: Infinity }}
+              className="inline-block w-[3px] h-[0.8em] bg-primary ml-2 align-middle"
+            />
           </motion.h1>
 
           <motion.div variants={itemVariants}>

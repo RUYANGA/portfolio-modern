@@ -132,10 +132,6 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-gradient-primary" />
-            <span className="font-mono text-sm text-primary">04.</span>
-          </div>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-muted-foreground max-w-xl mb-12">
             Projects demonstrating real engineering complexity — each with clear problem, solution, and architecture.

@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Mail, MessageSquare, MapPin, Github, Linkedin, Twitter, Send } from "lucide-react";
 
 const Contact = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -12,7 +12,7 @@ const Contact = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -34,11 +34,6 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-12 bg-gradient-primary" />
-            <span className="font-mono text-sm text-primary">06.</span>
-            <div className="h-px w-12 bg-gradient-primary" />
-          </div>
           <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
             Whether you have a specific project in mind or just want to discuss engineering and architecture, my inbox is always open.
@@ -131,7 +126,7 @@ const Contact = () => {
                     type="text"
                     id="name"
                     placeholder="John Doe"
-                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                    className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60"
                   />
                 </div>
                 <div className="space-y-2">
@@ -140,7 +135,7 @@ const Contact = () => {
                     type="email"
                     id="email"
                     placeholder="john@example.com"
-                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                    className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60"
                   />
                 </div>
               </div>
@@ -150,7 +145,7 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   placeholder="Project Inquiry"
-                  className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors placeholder:text-muted-foreground/60"
                 />
               </div>
               <div className="space-y-2">
@@ -159,7 +154,7 @@ const Contact = () => {
                   id="message"
                   rows={5}
                   placeholder="Tell me about your project..."
-                  className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                  className="w-full bg-secondary/80 dark:bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none placeholder:text-muted-foreground/60"
                 />
               </div>
               <motion.button
