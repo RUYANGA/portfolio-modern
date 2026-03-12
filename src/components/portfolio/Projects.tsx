@@ -45,6 +45,21 @@ const projects: Project[] = [
     image: "/mbupro.png",
   },
   {
+    title: "HitamoSpace",
+    type: "Event & Venue Management",
+    problem: "University of Rwanda lacked a unified platform for discovering and booking venues for academic events.",
+    solution: "A smart venue management system enabling real-time venue availability, event scheduling, and booking workflows across all UR campuses.",
+    highlights: [
+      "Real-time venue availability & search",
+      "Premium / Free venue tier system",
+      "Multi-campus event scheduling",
+      "Integrated event management dashboard",
+    ],
+    stack: ["React", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    live: "https://hitamospace.ur.ac.rw/",
+    image: "/hitamospace.png",
+  },
+  {
     title: "Enterprise Analytics API",
     type: "High-Performance Backend",
     problem: "Data-heavy reporting was slowing down the main API server.",
