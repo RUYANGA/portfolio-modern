@@ -1,0 +1,177 @@
+import { motion } from "framer-motion";
+import { Briefcase, GraduationCap, Award } from "lucide-react";
+
+const experiences = [
+  {
+    title: "Backend Development Intern",
+    company: "Binary Hub",
+    location: "Kigali, Rwanda",
+    period: "Jan 2024 — Aug 2025",
+    points: [
+      "Developed API endpoints and backend features using Node.js and NestJS",
+      "Implemented validation layers and structured error handling patterns",
+      "Assisted in debugging production issues and improving system reliability",
+      "Collaborated with senior engineers on architecture improvements",
+      "Enhanced application stability through testing and refactoring",
+    ],
+    impact: "Strengthened backend reliability and improved development workflow efficiency.",
+  },
+  {
+    title: "Junior Backend Developer",
+    company: "VIPI Transport",
+    location: "Kigali, Rwanda",
+    period: "Sept 2022 — 2023",
+    points: [
+      "Designed and maintained RESTful APIs using Node.js and Express",
+      "Modeled and optimized MongoDB and PostgreSQL database schemas",
+      "Implemented secure authentication and authorization using JWT",
+      "Collaborated with frontend teams to integrate backend services",
+      "Improved API response performance through query optimization",
+    ],
+    impact: "Contributed to stable backend services supporting daily operational workflows.",
+  },
+];
+
+const education = {
+  degree: "Bachelor of Science in Computer Science",
+  school: "University of Rwanda — Nyarugenge Campus",
+  coursework: ["Data Structures & Algorithms", "Database Systems", "Software Engineering", "Web Development", "Numerical Analysis"],
+};
+
+const certifications = [
+  {
+    title: "JavaScript Algorithms & Data Structures",
+    year: "2025",
+    description: "Algorithmic problem solving, data structures, and computational thinking using JavaScript.",
+  },
+  {
+    title: "Pro JavaScript Backend Developer",
+    year: "2024",
+    description: "Advanced backend engineering: scalable API design, Node.js architecture, and performance optimization.",
+  },
+  {
+    title: "AI Career Essentials",
+    year: "2024",
+    description: "Practical AI tooling, prompt engineering, and leveraging LLMs for software development.",
+  },
+];
+
+const Experience = () => {
+  return (
+    <section id="experience" className="section-padding">
+      <div className="container-narrow">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-12 bg-gradient-primary" />
+            <span className="font-mono text-sm text-primary">03.</span>
+          </div>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-12">Experience & Education</h2>
+        </motion.div>
+
+        {/* Work Experience */}
+        <div className="mb-16">
+          <div className="flex items-center gap-2 mb-8">
+            <Briefcase size={18} className="text-primary" />
+            <h3 className="font-heading text-xl font-semibold">Work Experience</h3>
+          </div>
+
+          <div className="space-y-8">
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className="relative pl-8 border-l-2 border-border hover:border-primary/40 transition-colors"
+              >
+                <div className="absolute left-[-7px] top-1 w-3 h-3 rounded-full bg-primary shadow-glow" />
+                <div className="bg-card rounded-xl border border-border p-6">
+                  <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+                    <div>
+                      <h4 className="font-heading font-semibold text-foreground">{exp.title}</h4>
+                      <p className="font-mono text-sm text-primary">{exp.company}</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
+                      <p className="text-xs text-muted-foreground">{exp.location}</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-2 mb-4">
+                    {exp.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="text-primary mt-1 font-mono text-xs">▸</span>
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-3 border-t border-border">
+                    <p className="text-xs text-primary font-mono">Impact: {exp.impact}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Education */}
+        <div className="grid md:grid-cols-2 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <GraduationCap size={18} className="text-primary" />
+              <h3 className="font-heading text-xl font-semibold">Education</h3>
+            </div>
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h4 className="font-heading font-semibold mb-1">{education.degree}</h4>
+              <p className="font-mono text-sm text-primary mb-4">{education.school}</p>
+              <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wider">Relevant Coursework</p>
+              <div className="flex flex-wrap gap-2">
+                {education.coursework.map((c) => (
+                  <span key={c} className="px-3 py-1 text-xs font-mono text-secondary-foreground bg-secondary rounded-md border border-border">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Certifications */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <Award size={18} className="text-primary" />
+              <h3 className="font-heading text-xl font-semibold">Certifications</h3>
+            </div>
+            <div className="space-y-4">
+              {certifications.map((cert) => (
+                <div key={cert.title} className="bg-card rounded-xl border border-border p-5">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h4 className="font-heading text-sm font-semibold">{cert.title}</h4>
+                    <span className="font-mono text-xs text-primary shrink-0">{cert.year}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{cert.description}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;
