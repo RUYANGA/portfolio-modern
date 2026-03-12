@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Briefcase, GraduationCap, Award } from "lucide-react";
 
 const experiences = [
@@ -57,6 +57,25 @@ const certifications = [
 ];
 
 const Experience = () => {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <section id="experience" className="section-padding">
       <div className="container-narrow">
@@ -80,21 +99,39 @@ const Experience = () => {
             <h3 className="font-heading text-xl font-semibold">Work Experience</h3>
           </div>
 
-          <div className="space-y-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-8 relative"
+          >
+            {/* Animated vertical line */}
+            <motion.div
+              initial={{ height: 0 }}
+              whileInView={{ height: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute left-[0.2rem] top-1 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent"
+            />
+
             {experiences.map((exp, i) => (
               <motion.div
                 key={exp.company}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="relative pl-8 border-l-2 border-border hover:border-primary/40 transition-colors"
+                variants={itemVariants}
+                className="relative pl-8 group"
               >
-                <div className="absolute left-[-7px] top-1 w-3 h-3 rounded-full bg-primary shadow-glow" />
-                <div className="bg-card rounded-xl border border-border p-6">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + (i * 0.2) }}
+                  className="absolute left-[-5px] top-1.5 w-3 h-3 rounded-full bg-primary shadow-glow group-hover:scale-125 transition-transform"
+                />
+                <div className="bg-card rounded-xl border border-border p-6 hover:border-primary/30 transition-all hover:shadow-lg hover:shadow-primary/5">
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                     <div>
-                      <h4 className="font-heading font-semibold text-foreground">{exp.title}</h4>
+                      <h4 className="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">{exp.title}</h4>
                       <p className="font-mono text-sm text-primary">{exp.company}</p>
                     </div>
                     <div className="text-right">
@@ -116,10 +153,10 @@ const Experience = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        {/* Education */}
+        {/* Education & Certs */}
         <div className="grid md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -131,15 +168,19 @@ const Experience = () => {
               <GraduationCap size={18} className="text-primary" />
               <h3 className="font-heading text-xl font-semibold">Education</h3>
             </div>
-            <div className="bg-card rounded-xl border border-border p-6">
+            <div className="bg-card rounded-xl border border-border p-6 hover:border-primary/20 transition-colors h-full">
               <h4 className="font-heading font-semibold mb-1">{education.degree}</h4>
               <p className="font-mono text-sm text-primary mb-4">{education.school}</p>
               <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wider">Relevant Coursework</p>
               <div className="flex flex-wrap gap-2">
                 {education.coursework.map((c) => (
-                  <span key={c} className="px-3 py-1 text-xs font-mono text-secondary-foreground bg-secondary rounded-md border border-border">
+                  <motion.span
+                    key={c}
+                    whileHover={{ y: -2, color: "hsl(var(--primary))" }}
+                    className="px-3 py-1 text-xs font-mono text-secondary-foreground bg-secondary rounded-md border border-border"
+                  >
                     {c}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
@@ -150,7 +191,7 @@ const Experience = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="flex items-center gap-2 mb-6">
               <Award size={18} className="text-primary" />
@@ -158,13 +199,17 @@ const Experience = () => {
             </div>
             <div className="space-y-4">
               {certifications.map((cert) => (
-                <div key={cert.title} className="bg-card rounded-xl border border-border p-5">
+                <motion.div
+                  key={cert.title}
+                  whileHover={{ x: 5 }}
+                  className="bg-card rounded-xl border border-border p-5 hover:border-primary/20 transition-all"
+                >
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <h4 className="font-heading text-sm font-semibold">{cert.title}</h4>
+                    <h4 className="font-heading text-sm font-semibold group-hover:text-primary transition-colors">{cert.title}</h4>
                     <span className="font-mono text-xs text-primary shrink-0">{cert.year}</span>
                   </div>
                   <p className="text-xs text-muted-foreground">{cert.description}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>

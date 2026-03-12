@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ExternalLink, Github, Layers } from "lucide-react";
 
 interface Project {
@@ -104,6 +104,25 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <section id="projects" className="section-padding bg-card/30">
       <div className="container-narrow">
@@ -123,22 +142,28 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-6"
+        >
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-card rounded-xl border border-border overflow-hidden hover:border-primary/30 transition-all group flex flex-col"
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+              className="bg-card rounded-xl border border-border overflow-hidden hover:border-primary/30 transition-all group flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5"
             >
               {project.image && (
-                <div className="aspect-video overflow-hidden border-b border-border">
-                  <img
+                <div className="aspect-video overflow-hidden border-b border-border bg-muted">
+                  <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
               )}
@@ -150,17 +175,22 @@ const Projects = () => {
                       {project.title}
                     </h3>
                   </div>
-                  <Layers size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                  <motion.div
+                    whileHover={{ rotate: 15 }}
+                    className="p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary transition-colors"
+                  >
+                    <Layers size={20} />
+                  </motion.div>
                 </div>
 
                 <div className="space-y-3 mb-5 flex-1">
                   <div>
                     <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">Problem</p>
-                    <p className="text-sm text-muted-foreground">{project.problem}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{project.problem}</p>
                   </div>
                   <div>
                     <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">Solution</p>
-                    <p className="text-sm text-muted-foreground">{project.solution}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{project.solution}</p>
                   </div>
                 </div>
 
@@ -184,9 +214,10 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className="flex gap-3 pt-3 border-t border-border mt-auto">
+                <div className="flex gap-4 pt-4 border-t border-border mt-auto">
                   {project.github && (
-                    <a
+                    <motion.a
+                      whileHover={{ x: 2 }}
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -194,10 +225,11 @@ const Projects = () => {
                     >
                       <Github size={14} />
                       Source
-                    </a>
+                    </motion.a>
                   )}
                   {project.live && (
-                    <a
+                    <motion.a
+                      whileHover={{ x: 2 }}
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -205,27 +237,28 @@ const Projects = () => {
                     >
                       <ExternalLink size={14} />
                       Live Demo
-                    </a>
+                    </motion.a>
                   )}
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-10"
+          transition={{ delay: 0.5 }}
+          className="text-center mt-12"
         >
           <a
             href="https://github.com/RUYANGA"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-surface border border-border text-foreground font-heading font-semibold text-sm hover:border-primary/40 transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-surface border border-border text-foreground font-heading font-semibold text-sm hover:border-primary/40 hover:bg-secondary/50 transition-all group shadow-sm"
           >
-            <Github size={16} />
+            <Github size={16} className="group-hover:scale-110 transition-transform" />
             View All Projects on GitHub
           </a>
         </motion.div>

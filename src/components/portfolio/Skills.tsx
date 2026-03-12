@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface SkillCategory {
   title: string;
@@ -40,6 +40,25 @@ const categories: SkillCategory[] = [
 ];
 
 const Skills = () => {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
     <section id="skills" className="section-padding bg-card/30">
       <div className="container-narrow">
@@ -59,15 +78,19 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-card rounded-xl border border-border p-6 hover:border-primary/30 transition-colors group"
+              variants={itemVariants}
+              whileHover={{ y: -5, borderColor: "rgba(var(--primary-rgb), 0.3)" }}
+              className="bg-card rounded-xl border border-border p-6 hover:border-primary/30 transition-shadow group h-full"
             >
               <div className="flex items-center gap-3 mb-5">
                 <span className="text-primary text-sm">{cat.icon}</span>
@@ -75,17 +98,18 @@ const Skills = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
-                  <span
+                  <motion.span
                     key={skill}
+                    whileHover={{ scale: 1.05, color: "hsl(var(--primary))" }}
                     className="px-3 py-1.5 text-xs font-mono text-secondary-foreground bg-secondary rounded-md border border-border group-hover:border-primary/20 transition-colors"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

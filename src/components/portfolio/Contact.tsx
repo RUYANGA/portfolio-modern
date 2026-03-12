@@ -1,156 +1,176 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
+import { Mail, MessageSquare, MapPin, Github, Linkedin, Twitter, Send } from "lucide-react";
 
 const Contact = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section id="contact" className="section-padding bg-card/30">
+    <section id="contact" className="section-padding relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+
       <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-px w-12 bg-gradient-primary" />
             <span className="font-mono text-sm text-primary">06.</span>
+            <div className="h-px w-12 bg-gradient-primary" />
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-muted-foreground max-w-xl mb-12">
-            I'm open to freelance opportunities, full-time positions, and collaborating on impactful projects.
+          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Whether you have a specific project in mind or just want to discuss engineering and architecture, my inbox is always open.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Contact info */}
+        <div className="grid lg:grid-cols-5 gap-12 items-start">
+          {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="lg:col-span-2 space-y-6"
           >
-            <div className="bg-card rounded-xl border border-border p-6 space-y-5">
-              <h3 className="font-heading font-semibold text-lg">Contact Information</h3>
-              <div className="space-y-4">
-                <a href="mailto:ruyangam15@gmail.com" className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Mail size={16} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Email</p>
-                    <p className="text-sm text-foreground group-hover:text-primary transition-colors">ruyangam15@gmail.com</p>
-                  </div>
-                </a>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                    <Phone size={16} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Phone</p>
-                    <p className="text-sm text-foreground">(+250) 780 905 910</p>
-                  </div>
+            {[
+              {
+                icon: <Mail size={20} />,
+                label: "Email",
+                value: "ruyangam15@gmail.com",
+                href: "mailto:ruyangam15@gmail.com",
+              },
+              {
+                icon: <MessageSquare size={20} />,
+                label: "WhatsApp",
+                value: "+250 780 120 184",
+                href: "https://wa.me/250780120184",
+              },
+              {
+                icon: <MapPin size={20} />,
+                label: "Location",
+                value: "Kigali, Rwanda",
+                href: "#",
+              },
+            ].map((item) => (
+              <motion.a
+                key={item.label}
+                href={item.href}
+                variants={itemVariants}
+                whileHover={{ x: 5, borderColor: "rgba(var(--primary-rgb), 0.3)" }}
+                className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:shadow-lg hover:shadow-primary/5 transition-all group"
+              >
+                <div className="p-3 rounded-lg bg-secondary text-primary group-hover:scale-110 transition-transform">
+                  {item.icon}
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                    <MapPin size={16} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Location</p>
-                    <p className="text-sm text-foreground">Kigali, Rwanda</p>
-                  </div>
+                <div>
+                  <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-0.5">{item.label}</p>
+                  <p className="font-medium text-foreground group-hover:text-primary transition-colors">{item.value}</p>
                 </div>
-              </div>
-            </div>
+              </motion.a>
+            ))}
 
-            <div className="bg-card rounded-xl border border-border p-6">
-              <h3 className="font-heading font-semibold mb-4">Connect With Me</h3>
-              <div className="flex gap-3">
-                <a
-                  href="https://github.com/RUYANGA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary border border-border flex items-center justify-center hover:border-primary/40 hover:text-primary transition-all text-muted-foreground"
-                >
-                  <Github size={20} />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary border border-border flex items-center justify-center hover:border-primary/40 hover:text-primary transition-all text-muted-foreground"
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href="mailto:ruyangam15@gmail.com"
-                  className="w-12 h-12 rounded-lg bg-secondary border border-border flex items-center justify-center hover:border-primary/40 hover:text-primary transition-all text-muted-foreground"
-                >
-                  <Mail size={20} />
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-card rounded-xl border border-border p-6">
-              <h3 className="font-heading font-semibold mb-3">Available For</h3>
-              <div className="flex flex-wrap gap-2">
-                {["Full-time Positions", "Freelance Work", "Consulting", "Collaborations"].map((item) => (
-                  <span key={item} className="px-3 py-1.5 text-xs font-mono text-primary bg-primary/10 rounded-full border border-primary/20">
-                    {item}
-                  </span>
+            <motion.div variants={itemVariants} className="pt-6">
+              <p className="text-sm font-heading font-semibold mb-4">Connect Socially</p>
+              <div className="flex gap-4">
+                {[
+                  { icon: <Github size={20} />, href: "https://github.com/RUYANGA" },
+                  { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/merci-ruyanga" },
+                  { icon: <Twitter size={20} />, href: "https://twitter.com/ruyanga_merci" },
+                ].map((social, i) => (
+                  <motion.a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -5, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-3 rounded-xl bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors border border-border"
+                  >
+                    {social.icon}
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Contact form */}
+          {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-3"
           >
-            <form className="bg-card rounded-xl border border-border p-6 space-y-5">
-              <h3 className="font-heading font-semibold text-lg">Send a Message</h3>
-              <div>
-                <label className="block text-xs font-mono text-muted-foreground mb-2">Name</label>
+            <form className="bg-card rounded-2xl border border-border p-8 shadow-sm space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-mono text-muted-foreground">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="John Doe"
+                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-mono text-muted-foreground">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="john@example.com"
+                    className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="subject" className="text-sm font-mono text-muted-foreground">Subject</label>
                 <input
                   type="text"
-                  placeholder="Your name"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  id="subject"
+                  placeholder="Project Inquiry"
+                  className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
                 />
               </div>
-              <div>
-                <label className="block text-xs font-mono text-muted-foreground mb-2">Email</label>
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-mono text-muted-foreground mb-2">Subject</label>
-                <input
-                  type="text"
-                  placeholder="Project inquiry"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-mono text-muted-foreground mb-2">Message</label>
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-mono text-muted-foreground">Message</label>
                 <textarea
-                  rows={4}
+                  id="message"
+                  rows={5}
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                  className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
                 />
               </div>
-              <button
-                type="button"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground font-heading font-semibold text-sm hover:opacity-90 transition-opacity shadow-glow"
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                className="w-full py-4 rounded-lg bg-gradient-primary text-primary-foreground font-heading font-bold shadow-glow hover:shadow-primary/40 transition-all flex items-center justify-center gap-2 group"
               >
-                <Send size={16} />
+                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 Send Message
-              </button>
+              </motion.button>
             </form>
           </motion.div>
         </div>
