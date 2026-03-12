@@ -1,5 +1,5 @@
 import { motion, Variants } from "framer-motion";
-import { Mail, MessageSquare, MapPin, Github, Linkedin, Twitter, Send } from "lucide-react";
+import { Mail, MessageSquare, MapPin, Github, Twitter, Send } from "lucide-react";
 
 const Contact = () => {
   const containerVariants: Variants = {
@@ -91,7 +91,6 @@ const Contact = () => {
               <div className="flex gap-4">
                 {[
                   { icon: <Github size={20} />, href: "https://github.com/RUYANGA" },
-                  { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/merci-ruyanga" },
                   { icon: <Twitter size={20} />, href: "https://twitter.com/ruyanga_merci" },
                 ].map((social, i) => (
                   <motion.a
