@@ -62,9 +62,6 @@ const Footer = () => {
           <p className="text-xs text-muted-foreground flex items-center gap-1">
             © 2026 Made with <Heart size={12} className="text-primary" /> by Merci RUYANGA
           </p>
-          <p className="text-xs text-muted-foreground font-mono">
-            Built with React & TypeScript
-          </p>
         </div>
       </div>
     </footer>

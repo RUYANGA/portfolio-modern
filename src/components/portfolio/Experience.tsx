@@ -102,10 +102,12 @@ const Experience = () => {
         </motion.div>
 
         {/* Work Experience */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-8">
-            <Briefcase size={18} className="text-primary" />
-            <h3 className="font-heading text-xl font-semibold">Work Experience</h3>
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+              <Briefcase size={22} strokeWidth={2.5} />
+            </div>
+            <h3 className="font-heading text-2xl font-bold">Work Experience</h3>
           </div>
 
           <motion.div
@@ -166,16 +168,18 @@ const Experience = () => {
         </div>
 
         {/* Education & Certs */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-2 mb-6">
-              <GraduationCap size={18} className="text-primary" />
-              <h3 className="font-heading text-xl font-semibold">Education</h3>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                <GraduationCap size={22} strokeWidth={2.5} />
+              </div>
+              <h3 className="font-heading text-2xl font-bold">Education</h3>
             </div>
             <div className="bg-card rounded-xl border border-border p-6 hover:border-primary/20 transition-colors h-full">
               <h4 className="font-heading font-semibold mb-1">{education.degree}</h4>
@@ -195,16 +199,18 @@ const Experience = () => {
             </div>
           </motion.div>
 
-          {/* Certifications */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="pt-12 md:pt-0"
           >
-            <div className="flex items-center gap-2 mb-6">
-              <Award size={18} className="text-primary" />
-              <h3 className="font-heading text-xl font-semibold">Certifications</h3>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                <Award size={22} strokeWidth={2.5} />
+              </div>
+              <h3 className="font-heading text-2xl font-bold">Certifications</h3>
             </div>
             <div className="space-y-4">
               {certifications.map((cert) => (
