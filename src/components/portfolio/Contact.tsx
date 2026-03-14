@@ -108,8 +108,8 @@ const Contact = () => {
               {
                 icon: <MessageSquare size={20} />,
                 label: "WhatsApp",
-                value: "+250 780 120 184",
-                href: "https://wa.me/250780120184",
+                value: "+250 780 905 910",
+                href: "https://wa.me/250780905910",
               },
               {
                 icon: <MapPin size={20} />,

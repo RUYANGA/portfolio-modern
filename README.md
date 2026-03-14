@@ -1,73 +1,72 @@
-# Welcome to your Lovable project
+# Engineer's Blueprint - Portfolio of Merci RUYANGA
 
-## Project info
+A premium, modern portfolio website showcasing the engineering expertise and projects of **Merci RUYANGA**, a Full-Stack Engineer specializing in backend architecture and scalable web applications.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![Portfolio Preview](public/placeholder.svg) <!-- Replace with a real screenshot if available -->
 
-## How can I edit this code?
+## 🛠️ Tech Stack
 
-There are several ways of editing your application.
+- **Frontend:** React 18, TypeScript, Vite
+- **Styling:** Tailwind CSS, Shadcn/UI, Framer Motion (Animations)
+- **Backend (Architecture Focus):** NestJS, PostgreSQL, Docker
+- **Tools:** Vitest (Testing), ESLint, Lucide React
 
-**Use Lovable**
+## ✨ Key Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **Modern UI/UX:** Sophisticated design with glassmorphism, dynamic lighting effects, and smooth micro-interactions.
+- **Project Showcase:** Detailed view of key projects with live demos and source code links.
+- **Engineering Approach:** A dedicated section explaining the technical philosophy and problem-solving methodology.
+- **Experience & Skills:** Structured timeline of professional growth and a comprehensive matrix of technical skills.
+- **Responsive Design:** Optimized for seamless performance across all device sizes.
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js (v18+)
+- npm or bun
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/RUYANGA/engineer-s-blueprint.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Development
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Run the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Building for Production
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a production build:
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+Preview the production build:
+```bash
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🧪 Testing
 
-## What technologies are used for this project?
+Run unit tests with Vitest:
+```bash
+npm run test
+```
 
-This project is built with:
+## 📄 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is open-source and available under the MIT License.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Built with ❤️ by [Merci RUYANGA](https://github.com/RUYANGA)
