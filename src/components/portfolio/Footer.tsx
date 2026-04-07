@@ -52,7 +52,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground flex items-center gap-1">
-            © 2026 Made with <Heart size={12} className="text-primary" /> by Merci RUYANGA
+            &copy; {new Date().getFullYear()} Made with <Heart size={12} className="text-primary" /> by Merci RUYANGA
           </p>
         </div>
       </div>

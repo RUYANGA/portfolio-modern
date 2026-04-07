@@ -51,7 +51,7 @@ const experiences = [
     points: [
       "Mentored and trained a cohort of 300+ students in an intensive tech bootcamp.",
       "Delivered comprehensive sessions on Machine Learning, Python, and C programming.",
-      "Taught full-stack development using React, Node.js, and modern databases.",
+      "Taught full-stack development using React, Node.js, Nxtjs, Nestjs and modern databases.",
       "Introduced advanced technical concepts including Blockchain and Mobile App development.",
     ],
     impact: "Successfully upskilled over 300 students, equipping them with practical industry-relevant skills.",
@@ -61,10 +61,15 @@ const experiences = [
 const education = {
   degree: "Bachelor of Science in Computer Science",
   school: "University of Rwanda — Nyarugenge Campus",
-  coursework: ["Data Structures & Algorithms", "Database Systems", "Software Engineering", "Web Development", "Numerical Analysis"],
+  coursework: ["Data Structures & Algorithms", "Database Systems", "Software Engineering", "Web Development", "Numerical Analysis", "Machine Learning", "Artificial Intelligence", "Operating Systems", "Computer Networks", "Distributed Systems", "Cloud Computing", "Human-Computer Interaction", "Computer Architecture", "Cybersecurity", "Data Mining", "Cryptography", "Computer Graphics", "Mobile Application Development", "Internet of Things", "Compiler Design"],
 };
 
 const certifications = [
+  {
+    title: "Introduction to Cybersecurity",
+    year: "2025",
+    description: "Fundamentals of cybersecurity, network defense, threat modeling, and understanding modern security architectures.",
+  },
   {
     title: "JavaScript Algorithms & Data Structures",
     year: "2025",
