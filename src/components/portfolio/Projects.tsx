@@ -101,6 +101,20 @@ const projects: Project[] = [
     stack: ["TypeScript", "Node.js", "PostgreSQL", "React"],
     github: "https://github.com/RUYANGA",
   },
+  {
+    title: "Marks Predict",
+    type: "Machine Learning Model",
+    problem: "Need for a data-driven approach to forecast student academic performance based on historical variables.",
+    solution: "Developed a predictive Machine Learning model using Regression algorithms to accurately forecast marks.",
+    highlights: [
+      "Exploratory Data Analysis (EDA)",
+      "Data preprocessing and feature engineering",
+      "Model training, tuning, and evaluation",
+      "Interactive Jupyter Notebook environment",
+    ],
+    stack: ["Python", "Jupyter Notebook", "Pandas", "Scikit-Learn"],
+    github: "https://github.com/RUYANGA/Marks-Predict-Machine-learning",
+  },
 ];
 
 const Projects = () => {

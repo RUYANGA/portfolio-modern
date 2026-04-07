@@ -51,7 +51,7 @@ const About = () => {
               </motion.div>
               <div>
                 <h3 className="font-heading text-xl font-semibold group-hover:text-primary transition-colors">Ruyanga Merci</h3>
-                <p className="font-mono text-sm text-primary mt-1">Full-Stack Engineer</p>
+                <p className="font-mono text-sm text-primary mt-1">Full-Stack & ML Engineer</p>
               </div>
               <div className="space-y-3 pt-2">
                 {[
@@ -85,14 +85,14 @@ const About = () => {
             className="md:col-span-3 space-y-6"
           >
             <p className="text-muted-foreground leading-relaxed">
-              I am a Full-Stack Engineer passionate about building reliable digital platforms that combine
-              strong backend architecture with intuitive user experiences. My work centers on designing
-              scalable APIs, structured databases, and modern web interfaces that perform efficiently in
+              I am a Full-Stack & Machine Learning Engineer passionate about building intelligent digital platforms that combine
+              strong backend architecture with intuitive user experiences and data-driven insights. My work centers on designing
+              scalable APIs, structured databases, integrating ML models, and building modern web interfaces that perform efficiently in
               real production environments.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               With hands-on experience across the full development lifecycle — from system design and
-              implementation to deployment and optimization — I enjoy transforming complex requirements
+              implementation to deploying ML models and optimizing performance — I enjoy transforming complex requirements
               into clean, maintainable solutions.
             </p>
 
@@ -106,6 +106,7 @@ const About = () => {
                 className="grid grid-cols-1 sm:grid-cols-2 gap-3"
               >
                 {[
+                  "Machine Learning & AI integration",
                   "Backend system architecture & API design",
                   "Role-based authentication & authorization",
                   "Real-time communication (WebSockets)",
@@ -129,6 +130,7 @@ const About = () => {
               <h4 className="font-heading font-semibold text-foreground mb-3">Currently Exploring</h4>
               <div className="flex flex-wrap gap-2">
                 {[
+                  "LLMs & Generative AI",
                   "Distributed Systems",
                   "Performance Optimization",
                   "Advanced DevOps",

@@ -130,9 +130,9 @@ const Hero = () => {
           <motion.div variants={itemVariants}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-glow mb-8">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="font-mono text-xs text-primary">Full-Stack Engineer</span>
+              <span className="font-mono text-xs text-primary">Full-Stack & ML Engineer</span>
               <span className="text-muted-foreground text-xs">•</span>
-              <span className="font-mono text-xs text-muted-foreground">Backend-Focused</span>
+              <span className="font-mono text-xs text-muted-foreground">Backend & ML Focused</span>
             </div>
           </motion.div>
 
@@ -143,9 +143,9 @@ const Hero = () => {
             Full-Stack Engineer with 5+ years of experience designing, building, and deploying
             production-ready web applications. Specialized in{" "}
             <span className="text-foreground font-medium">backend architecture</span>,{" "}
-            <span className="text-foreground font-medium">API development</span>, and{" "}
+            <span className="text-foreground font-medium">machine learning integration</span>, and{" "}
             <span className="text-foreground font-medium">database design</span> using TypeScript (Expert),
-            NestJS (Expert), FastAPI (Expert), Django (Expert), MySql (Expert) ,MongoDb and PostgreSQL (Expert).
+            NestJS (Expert), FastAPI (Expert), Django (Expert), Python, MySql (Expert) ,MongoDb and PostgreSQL (Expert).
           </motion.p>
 
           <motion.div
@@ -181,7 +181,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mt-16 flex flex-wrap gap-3"
           >
-            {["TypeScript (Expert)", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"].map((tech, i) => (
+            {["TypeScript (Expert)", "Python", "NestJS", "FastAPI", "PostgreSQL", "Docker", "Machine Learning"].map((tech, i) => (
               <motion.span
                 key={tech}
                 initial={{ opacity: 0, scale: 0.8 }}

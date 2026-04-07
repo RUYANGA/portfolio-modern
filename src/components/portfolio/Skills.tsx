@@ -37,6 +37,11 @@ const categories: SkillCategory[] = [
     icon: "◆",
     skills: ["JavaScript (Expert)", "TypeScript (Expert)", "Python (Expert)", "Java", "Dart", "C++"],
   },
+  {
+    title: "Machine Learning & AI",
+    icon: "◆",
+    skills: ["TensorFlow", "PyTorch", "Scikit-Learn", "Pandas", "NumPy", "Computer Vision", "NLP", "LLMs"],
+  },
 ];
 
 const Skills = () => {
