@@ -19,7 +19,7 @@ const experiences = [
     title: "Backend Development Intern",
     company: "Binary Hub",
     location: "Kigali, Rwanda",
-    period: "Jan 2024 — Aug 2025",
+    period: "Jan 2024 — Present",
     points: [
       "Developed API endpoints and backend features using Node.js and NestJS",
       "Implemented validation layers and structured error handling patterns",
@@ -42,6 +42,19 @@ const experiences = [
       "Improved API response performance through query optimization",
     ],
     impact: "Contributed to stable backend services supporting daily operational workflows.",
+  },
+  {
+    title: "Technical Trainer",
+    company: "Edtech Solution",
+    location: "Kigali, Rwanda",
+    period: "2 Months",
+    points: [
+      "Mentored and trained a cohort of 300+ students in an intensive tech bootcamp.",
+      "Delivered comprehensive sessions on Machine Learning, Python, and C programming.",
+      "Taught full-stack development using React, Node.js, and modern databases.",
+      "Introduced advanced technical concepts including Blockchain and Mobile App development.",
+    ],
+    impact: "Successfully upskilled over 300 students, equipping them with practical industry-relevant skills.",
   },
 ];
 

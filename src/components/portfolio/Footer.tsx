@@ -10,7 +10,7 @@ const Footer = () => {
               MR<span className="text-foreground">.</span>
             </a>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Full-Stack Engineer building scalable and efficient web systems.
+              Full-Stack & ML Engineer building scalable, intelligent, and efficient platforms.
             </p>
           </div>
 
